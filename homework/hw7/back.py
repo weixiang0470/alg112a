@@ -106,13 +106,13 @@ z = Value(0.0)
 fail = 10000
 step = 0.001
 
-f = (x-1)*(x-1) + (y-2)*(y-2) + (z-3)*(z-3)
 while(fail>0):
-    
-    
+    f = (x-1)*(x-1) + (y-2)*(y-2) + (z-3)*(z-3)
+
     fail-=1
 
     f.backward()#Get grad
+    
     x_step = step * x.grad * (-1)
     y_step = step * y.grad * (-1)
     z_step = step * z.grad * (-1)
@@ -125,5 +125,4 @@ while(fail>0):
     x,y,z = Value(x_new),Value(y_new),Value(z_new)
     print(f'f={f.data:.4f}/{f.grad:.2f} : x={x.data:.4f}/{x.grad:.2f} : y={y.data:.4f}/{y.grad:.2f} : z={z.data:.4f}/{z.grad:.2f} : glen={glen:.4f}')
     if glen <= 0.001 : break
-    #print(f'f={f.grad:.4f} : f_new={f_new.data:.4f}/{f_new.grad:.2f} : x={x.grad:.4f} : y={y.grad:.4f} : z={z.grad:.4f} : glen={glen:.4f}')
-    f = (x-1)*(x-1) + (y-2)*(y-2) + (z-3)*(z-3)
+
