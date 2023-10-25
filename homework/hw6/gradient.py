@@ -14,8 +14,9 @@ def grad(f, p):
     return gp
 
 def f(p):
-    return  ( p[0]*p[0] -2*p[0] + p[1]*p[1] - 2*p[1] - 8 )
+    #return  ( p[0]*p[0] -2*p[0] + p[1]*p[1] - 2*p[1] - 8 )
     #return -1*(p[0]**2+p[1]**2+p[2]**2)
+    return (p[0]-1)**2 + (p[1]-2)**2 + (p[2]-3)**2
 
 def descent(gp,p):
     p_new = p.copy()
@@ -24,20 +25,22 @@ def descent(gp,p):
     return p_new
 
 if __name__ == "__main__" :
-    p = [-3,-3]
+    p = [-3,-3,0]
     fail = 10000
     flat = len(p)
     count=0
     #print(f'grad : {grad(f,p)}')
     while(fail>0):
-        if count == flat:
+        if count == flat: #If all vector in gp are 0 then break
             break
         fail -= 1
         count = 0
         gp = grad(f,p)
         p_new = descent(gp,p)
+        diff = f(p) - f(p_new)
+        if diff < 0.0000001: break 
         p = p_new.copy()
         print(f'grad : {grad(f,p)} | point : {p}')
         for j in range(flat):
-            if gp[j] <= 0.01 and gp[j] >= 0.01:
+            if gp[j] <= 0.01 and gp[j] >= 0.01: #if vertor of gp is zero count++
                 count += 1
