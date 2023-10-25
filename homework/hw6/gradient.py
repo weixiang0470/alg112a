@@ -1,3 +1,4 @@
+from numpy.linalg import norm
 step = 0.01
 
 # 函數 f 對變數 p[k] 的偏微分: df / dp[k]
@@ -25,7 +26,7 @@ def descent(gp,p):
     return p_new
 
 if __name__ == "__main__" :
-    p = [-3,-3,0]
+    p = [0,0,0]
     fail = 10000
     flat = len(p)
     count=0
@@ -37,10 +38,10 @@ if __name__ == "__main__" :
         count = 0
         gp = grad(f,p)
         p_new = descent(gp,p)
-        diff = f(p) - f(p_new)
-        if diff < 0.0000001: break 
+        #diff = f(p) - f(p_new)
+        #if diff < 0.0000001: break 
         p = p_new.copy()
-        print(f'grad : {grad(f,p)} | point : {p}')
+        print(f'gd : {gp} | p : {p} | glen:{norm(gp)}')
         for j in range(flat):
             if gp[j] <= 0.01 and gp[j] >= 0.01: #if vertor of gp is zero count++
                 count += 1
