@@ -1,2 +1,3 @@
-`queen.cpp`是問ChatGPT(請用 c++ 幫我寫 八皇后的問題)後抄下來的，而`queen.py`則是我參考`queen.cpp`後自己寫的
-
+- `queen.cpp`是問ChatGPT(請用 c++ 幫我寫 八皇后的問題)後抄下來的，而`queen.py`則是我參考`queen.cpp`後自己寫的
+- `river.cpp` 是我自己寫的
+- `find.py` 和 `find.cpp` 也都是我自己寫的

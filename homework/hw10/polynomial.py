@@ -11,6 +11,8 @@ def neighbour(x,h):
     return nb_list
 
 def dfs(x,failCount,visitedMap,Ans):
+    global total_dfs
+    total_dfs+=1
     x_str=str(x)
     if visitedMap.get(x_str): return
     visitedMap[x_str] = True
@@ -28,9 +30,11 @@ def dfs(x,failCount,visitedMap,Ans):
         dfs(nb_list[nb],failCount,visitedMap,Ans)
 visitedMap={}
 Ans=[]
+total_dfs=0
 dfs(0,0,visitedMap,Ans)
 if not Ans:
-    print("No solution")
+    print(f'No solution total_dfs:{total_dfs}')
 else :
     for ans in Ans:
         print(ans)
+    print(f'total_dfs:{total_dfs}')
